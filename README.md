@@ -3,7 +3,7 @@ nvim-translator
 
 A plugin to translate text in Neovim
 
-The plugin is currently under development.
+The plugin is currently under development. It works only with 1 selected line at the moment.
 Currently it is only available in Visual Mode and only works with the Deepl API.
 Deepl API has a free quota of 500,000 characters per month.
 

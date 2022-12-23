@@ -19,16 +19,34 @@ local unload_packages = function()
     end
 end
 
--- executes the run method in the package
 run_action = function(text)
     unload_packages()
     require(package_name).translate(text)
 end
--- unload and run the function from the package
+
+run_test = function()
+    print("start")
+    local vsel = buf_vtext()
+    print(vsel)
+    print("end")
+end
+function buf_vtext()
+    local a_orig = vim.fn.getreg('a')
+    local mode = vim.fn.mode()
+    if mode ~= 'v' and mode ~= 'V' then
+        vim.cmd [[normal! gv]]
+    end
+    vim.cmd [[normal! "aygv]]
+    local text = vim.fn.getreg('a')
+    vim.fn.setreg('a', a_orig)
+    return text
+end
 
 local set_keymap = vim.api.nvim_set_keymap
 
 set_keymap('n', ',r', '<cmd>luafile dev/init.lua<cr>', {})
 set_keymap('v', ',w', ':<c-u>lua run_action()<cr>', {})
-set_keymap('v', ',t', ':lua run_action(vim.fn.input(""))<cr>', {})
+-- set_keymap('v', ',t', ':lua run_action(vim.fn.input(""))<cr>', {})
+set_keymap('v', ',t', ':lua run_test()<cr>', {})
+set_keymap('n', ',t', ':lua run_test()<cr>', {})
 -- Hallo wie geht es dir?
