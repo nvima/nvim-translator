@@ -7,6 +7,8 @@ The plugin is currently under development. It works only with 1 selected line at
 Currently it is only available in Visual Mode and only works with the Deepl API.
 Deepl API has a free quota of 500,000 characters per month.
 
+![](https://raw.githubusercontent.com/nvima/nvim-translator/main/docs/translate.gif)
+
 
 Installation
 ------------
